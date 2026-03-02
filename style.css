@@ -1,0 +1,124 @@
+/* Page Setup */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Board Layout */
+.ludo-board {
+    display: grid;
+    grid-template-columns: 6fr 3fr 6fr;
+    grid-template-rows: 6fr 3fr 6fr;
+    width: 600px;
+    height: 600px;
+    background-color: #333; /* Yeh background grid lines create karega */
+    gap: 1px; /* Borders ke liye 1px gap */
+    border: 15px solid #d4a373; /* Wooden border frame */
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Base Areas (Corners) */
+.base {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.red-base { background-color: #e62b2e; }
+.yellow-base { background-color: #f4d03f; }
+.green-base { background-color: #27ae60; }
+.blue-base { background-color: #2980b9; }
+
+/* Inner Circles inside Bases */
+.circle-container {
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background-color: inherit;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15%;
+    padding: 15%;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* White Tokens */
+.token {
+    background-color: white;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ddd;
+}
+
+/* Paths (Walking Tracks) */
+.path {
+    background-color: #333; /* Grid lines color */
+    gap: 1px;
+}
+.path.vertical {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+.path.horizontal {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Individual Grid Cells */
+.cell {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cell.red { background-color: #e62b2e; }
+.cell.yellow { background-color: #f4d03f; }
+.cell.green { background-color: #27ae60; }
+.cell.blue { background-color: #2980b9; }
+
+/* Start Text & Arrows */
+.start {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    line-height: 1.2;
+}
+
+/* Center HOME Area */
+.center-home {
+    background: conic-gradient(
+        from 315deg,
+        #f4d03f 0deg 90deg,
+        #2980b9 90deg 180deg,
+        #27ae60 180deg 270deg,
+        #e62b2e 270deg 360deg
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+/* Center Diagonals (X shape) */
+.center-home::before,
+.center-home::after {
+    content: '';
+    position: absolute;
+    background-color: #333;
+    width: 141.4%;
+    height: 1px;
+    top: 50%;
+    left: -20.7%;
+}
+.center-home::before { transform: rotate(45deg); }
+.center-home::after { transform: rotate(-45deg); }
